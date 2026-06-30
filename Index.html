@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Island Title Research — Títulos claros. Cierres seguros.</title>
+  <meta name="description" content="Investigación profesional de título de propiedad en Puerto Rico. Acceso directo KARIBE, los 78 municipios, bilingüe EN/ES." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink:    #0E1C18;
+      --cream:  #F7F5F1;
+      --teal:   #1B5C4A;
+      --teal-t: rgba(14, 36, 28, 0.78);
+      --gold:   #A67C2E;
+      --white:  #ffffff;
+      --muted:  #5a6b65;
+      --border: rgba(166,124,46,0.25);
+      --serif:  'DM Serif Display', Georgia, serif;
+      --sans:   'Inter', system-ui, sans-serif;
+      --gap:    clamp(3rem, 6vw, 5rem);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--teal-t);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(166,124,46,0.2);
+    }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto; padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo .wordmark {
+      font-family: var(--serif); font-style: italic;
+      color: var(--cream); font-size: 1.15rem; line-height: 1.1; display: block;
+    }
+    .nav-logo .sub {
+      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.07em;
+      text-transform: uppercase; color: rgba(247,245,241,0.8); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      color: var(--gold) !important;
+      border: 1px solid var(--gold) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
+
+    /* HERO */
+    #hero {
+      position: relative; width: 100%; height: 100vh; min-height: 580px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      /* TODO: replace with purchased iStock photo ID 1022617938 (Mark Zhu — Old San Juan) */
+      background:
+        linear-gradient(160deg, rgba(14,28,24,0.72) 0%, rgba(14,28,24,0.45) 50%, rgba(14,28,24,0.75) 100%),
+        url('https://images.unsplash.com/photo-1566777860456-ce71a16e1584?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      text-align: center; max-width: 820px; padding: 0 2rem;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      padding: 0.3rem 1rem; border: 1px solid rgba(166,124,46,0.4); border-radius: 2px;
+      background: rgba(14,28,24,0.45);
+    }
+    .hero-headline {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      line-height: 1.05; color: var(--cream); margin-bottom: 0.5rem;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.6), 0 0 48px rgba(0,0,0,0.35);
+    }
+    .hero-headline em { color: var(--gold); }
+    .hero-headline-en {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: rgba(247,245,241,0.45); margin-bottom: 1.75rem; display: block;
+    }
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      color: rgba(247,245,241,0.72); max-width: 540px;
+      margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.75;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.7);
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block; padding: 0.85rem 2rem;
+      background: var(--gold); color: var(--ink);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: 2px; transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-block; padding: 0.85rem 2rem;
+      border: 1px solid rgba(247,245,241,0.4); color: var(--cream);
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: 2px; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      color: rgba(247,245,241,0.35); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, rgba(166,124,46,0.6), transparent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+    /* TRUST STRIP */
+    #trust { background: var(--teal); border-bottom: 1px solid rgba(166,124,46,0.15); }
+    .trust-inner {
+      max-width: 1160px; margin: 0 auto; padding: 1.1rem 2rem;
+      display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.55rem;
+      padding: 0.45rem 1.75rem;
+      border-right: 1px solid rgba(166,124,46,0.2);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .trust-text { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.07em; color: rgba(247,245,241,0.82); text-transform: uppercase; }
+
+    /* SHARED SECTION STYLES */
+    section { padding: var(--gap) 2rem; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label {
+      display: block; font-size: 0.63rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.65rem;
+    }
+    .section-title {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.9rem, 4vw, 2.9rem); line-height: 1.1;
+      color: var(--ink); margin-bottom: 0.9rem;
+    }
+    .section-sub { font-size: 0.95rem; color: var(--muted); max-width: 520px; line-height: 1.8; font-weight: 300; }
+
+    /* SERVICES */
+    #services { background: var(--cream); }
+    .services-header { margin-bottom: 3rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .service-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-top: 3px solid var(--gold); padding: 2rem 1.75rem; border-radius: 2px;
+      transition: box-shadow 0.25s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 32px rgba(14,28,24,0.08); transform: translateY(-3px); }
+    .service-numeral { font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: var(--gold); margin-bottom: 1.1rem; }
+    .service-name { font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: var(--ink); margin-bottom: 0.25rem; line-height: 1.2; }
+    .service-name-es { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: block; }
+    .service-desc { font-size: 0.86rem; color: var(--muted); line-height: 1.75; }
+
+    /* PROCESS */
+    #process { background: var(--ink); }
+    #process .section-title { color: var(--cream); }
+    #process .section-sub { color: rgba(247,245,241,0.5); }
+    .process-header { margin-bottom: 3rem; }
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0; }
+    .process-step { padding: 0 2rem 2rem; }
+    .step-title { font-size: 0.92rem; font-weight: 600; color: var(--cream); margin-bottom: 0.5rem; }
+    .step-title-es { font-size: 0.67rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; display: block; }
+    .step-desc { font-size: 0.82rem; color: rgba(247,245,241,0.48); line-height: 1.7; }
+    .step-icon-wrap {
+      position: relative;
+      width: 72px;
+      height: 72px;
+      margin-bottom: 1.5rem;
+    }
+    .step-icon-wrap svg {
+      width: 72px;
+      height: 72px;
+      color: var(--gold);
+      opacity: 0.9;
+    }
+    .step-icon-wrap .step-num {
+      position: absolute;
+      bottom: -6px;
+      right: -6px;
+      width: 24px;
+      height: 24px;
+      background: var(--gold);
+      color: var(--ink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 2px solid var(--ink);
+    }
+
+    /* ABOUT */
+    #about { background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-quote {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.3rem, 2.3vw, 1.75rem); line-height: 1.35; color: var(--teal);
+      border-left: 3px solid var(--gold); padding-left: 1.6rem; margin-bottom: 1.75rem;
+    }
+    .about-body { font-size: 0.9rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.25rem; }
+    .about-stats {
+      display: flex; gap: 2.5rem; flex-wrap: wrap;
+      margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);
+    }
+    .stat-number { font-family: var(--serif); font-style: italic; font-size: 2.4rem; color: var(--ink); line-height: 1; }
+    .stat-label { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.2rem; }
+    .about-visual { position: relative; }
+    .about-img-frame {
+      width: 100%; aspect-ratio: 4/5; background: var(--teal);
+      border-radius: 2px; overflow: hidden; position: relative;
+    }
+    .about-placeholder {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 1rem; color: rgba(247,245,241,0.3);
+    }
+    .about-placeholder p { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    .about-badge {
+      position: absolute; bottom: -1.5rem; left: -1.5rem;
+      background: var(--gold); color: var(--ink);
+      padding: 1.1rem 1.4rem; border-radius: 2px; box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+    .badge-text { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.55; }
+
+    /* CONTACT */
+    #contact { background: linear-gradient(155deg, var(--teal) 0%, #0d2b22 100%); }
+    #contact .section-title { color: var(--cream); }
+    #contact .section-sub { color: rgba(247,245,241,0.58); }
+    .contact-wrap { max-width: 680px; margin: 3rem auto 0; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1rem; }
+    label { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,245,241,0.55); }
+    input, select, textarea {
+      background: rgba(247,245,241,0.07); border: 1px solid rgba(166,124,46,0.25);
+      border-radius: 2px; padding: 0.75rem 1rem;
+      font-size: 0.88rem; color: var(--cream); font-family: var(--sans);
+      transition: border-color 0.2s; width: 100%;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(247,245,241,0.28); }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
+    select { appearance: none; cursor: pointer; }
+    select option { background: #0d2b22; }
+    textarea { resize: vertical; min-height: 90px; }
+    .btn-submit {
+      width: 100%; padding: 1rem; background: var(--gold); color: var(--ink);
+      font-family: var(--sans); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; border: none; border-radius: 2px;
+      cursor: pointer; margin-top: 0.25rem; transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer { background: var(--ink); border-top: 1px solid rgba(166,124,46,0.1); padding: 2rem 2rem; }
+    .footer-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;
+    }
+    .footer-logo { font-family: var(--serif); font-style: italic; color: var(--cream); font-size: 1.05rem; }
+    .footer-links { display: flex; gap: 1.75rem; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.72rem; color: rgba(247,245,241,0.4); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.67rem; color: rgba(247,245,241,0.25); letter-spacing: 0.05em; }
+
+    /* LANG TOGGLE */
+    .lang-toggle {
+      display: flex; gap: 0; border: 1px solid rgba(166,124,46,0.3); border-radius: 2px; overflow: hidden;
+    }
+    .lang-btn {
+      padding: 0.3rem 0.65rem; font-size: 0.67rem; font-weight: 600;
+      letter-spacing: 0.1em; cursor: pointer; border: none; background: transparent;
+      color: rgba(247,245,241,0.5); font-family: var(--sans); transition: background 0.2s, color 0.2s;
+    }
+    .lang-btn.active { background: var(--gold); color: var(--ink); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity:1; transform:none; } .scroll-line { animation:none; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .trust-item { border-right: none; padding: 0.4rem 1rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-visual { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-steps::before { display: none; }
+    }
+
+    /* ES/EN visibility */
+    [lang-content="en"] { display: none; }
+    body.lang-en [lang-content="es"] { display: none; }
+    body.lang-en [lang-content="en"] { display: revert; }
+
+    /* DARK MODE */
+    body.dark-mode { background: #0a1510; }
+    body.dark-mode #services { background: #0a1510; }
+    body.dark-mode .service-card { background: #111c16; border-color: rgba(166,124,46,0.18); }
+    body.dark-mode .service-name { color: var(--cream); }
+    body.dark-mode .service-desc { color: rgba(247,245,241,0.55); }
+    body.dark-mode .section-title { color: var(--cream); }
+    body.dark-mode .section-sub { color: rgba(247,245,241,0.55); }
+    body.dark-mode #about { background: #0a1510; }
+    body.dark-mode .about-quote { color: var(--gold); }
+    body.dark-mode .about-body { color: rgba(247,245,241,0.6); }
+    body.dark-mode .about-stats { border-top-color: rgba(166,124,46,0.18); }
+    body.dark-mode .stat-number { color: var(--cream); }
+    body.dark-mode .stat-label { color: rgba(247,245,241,0.45); }
+
+    .dark-btn {
+      background: transparent;
+      border: 1px solid rgba(166,124,46,0.3);
+      border-radius: 2px;
+      color: rgba(247,245,241,0.5);
+      cursor: pointer;
+      font-size: 0.88rem;
+      line-height: 1;
+      padding: 0.28rem 0.55rem;
+      font-family: var(--sans);
+      transition: background 0.2s, color 0.2s;
+    }
+    .dark-btn:hover { background: rgba(166,124,46,0.15); color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <span class="wordmark">Island Title Research</span>
+      <span class="sub">Puerto Rico · Investigación de Título</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services" lang-content="es">Servicios</a><a href="#services" lang-content="en">Services</a></li>
+      <li><a href="#process" lang-content="es">Proceso</a><a href="#process" lang-content="en">Process</a></li>
+      <li><a href="#about" lang-content="es">Nosotros</a><a href="#about" lang-content="en">About</a></li>
+      <li>
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="setLang('es')">ES</button>
+          <button class="lang-btn" onclick="setLang('en')">EN</button>
+        </div>
+      </li>
+      <li><button class="dark-btn" id="dark-toggle" onclick="toggleDark()">◐</button></li>
+      <li><a href="#contact" class="nav-cta" lang-content="es">Contáctanos</a><a href="#contact" class="nav-cta" lang-content="en">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+<h1 class="hero-headline" lang-content="es">Títulos claros.<br /><em>Cierres seguros.</em></h1>
+    <h1 class="hero-headline" lang-content="en">Clear titles.<br /><em>Confident closings.</em></h1>
+
+    <p class="hero-sub" lang-content="es">Investigación profesional de título de propiedad para toda transacción de bienes raíces en Puerto Rico — residencial, comercial e inversión.</p>
+    <p class="hero-sub" lang-content="en">Professional property title investigation for every real estate transaction in Puerto Rico — residential, commercial, and investment.</p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary" lang-content="es">Contáctanos</a>
+      <a href="#contact" class="btn-primary" lang-content="en">Contact Us</a>
+      <a href="#services" class="btn-ghost" lang-content="es">Nuestros Servicios</a>
+      <a href="#services" class="btn-ghost" lang-content="en">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span lang-content="es">Ver más</span>
+    <span lang-content="en">Scroll</span>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div id="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" lang-content="es">Acceso KARIBE</span><span class="trust-text" lang-content="en">KARIBE Access</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">78 <span lang-content="es">Municipios</span><span lang-content="en">Municipalities</span></span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" lang-content="es">Entrega Rápida</span><span class="trust-text" lang-content="en">Fast Turnaround</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Bilingüe EN · ES</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <span class="section-label" lang-content="es">Lo Que Hacemos</span>
+      <span class="section-label" lang-content="en">What We Do</span>
+      <h2 class="section-title" lang-content="es">Investigación de título<br />hecha correctamente</h2>
+      <h2 class="section-title" lang-content="en">Title investigation<br />done right</h2>
+      <p class="section-sub" lang-content="es">Toda propiedad tiene una historia. La rastreamos completa, precisa y a tiempo para su cierre.</p>
+      <p class="section-sub" lang-content="en">Every property has a history. We trace it — completely, accurately, and in time for your closing.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-numeral">i.</div>
+        <h3 class="service-name" lang-content="es">Búsqueda de Título</h3>
+        <h3 class="service-name" lang-content="en">Title Search</h3>
+        <span class="service-name-es" lang-content="es">Title Search</span>
+        <span class="service-name-es" lang-content="en">Búsqueda de Título</span>
+        <p class="service-desc" lang-content="es">Investigación completa del historial registral de una propiedad — cadena de dominio, escrituras, hipotecas y todo instrumento que afecte el título. Realizamos la búsqueda con acceso directo a KARIBE.</p>
+        <p class="service-desc" lang-content="en">Complete investigation of a property's recorded history — ownership chain, deeds (<em>escrituras</em>), mortgages, and all instruments affecting title. Performed with direct KARIBE access.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-numeral">ii.</div>
+        <h3 class="service-name" lang-content="es">Gravámenes y Cargas</h3>
+        <h3 class="service-name" lang-content="en">Lien &amp; Encumbrance Search</h3>
+        <span class="service-name-es" lang-content="es">Lien &amp; Encumbrance Search</span>
+        <span class="service-name-es" lang-content="en">Gravámenes y Cargas</span>
+        <p class="service-desc" lang-content="es">Identificamos todo gravamen, sentencia, embargo, hipoteca impaga y carga de record — para que compradores y prestamistas sepan exactamente qué obligaciones siguen a la propiedad.</p>
+        <p class="service-desc" lang-content="en">We identify every lien, judgment, attachment, unpaid mortgage, and encumbrance of record — so buyers and lenders know exactly what obligations follow the property, not the seller.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-numeral">iii.</div>
+        <h3 class="service-name" lang-content="es">Verificación de Linderos</h3>
+        <h3 class="service-name" lang-content="en">Boundary Verification</h3>
+        <span class="service-name-es" lang-content="es">Boundary Verification</span>
+        <span class="service-name-es" lang-content="en">Verificación de Linderos</span>
+        <p class="service-desc" lang-content="es">Revisamos los datos catastrales y las descripciones registradas para verificar que los linderos en el registro corresponden con lo que se está transmitiendo — clave para evitar disputas después del cierre.</p>
+        <p class="service-desc" lang-content="en">We review cadastral data and recorded descriptions to verify that the property boundaries in the registry match what is being conveyed — critical for avoiding disputes after closing.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-numeral">iv.</div>
+        <h3 class="service-name" lang-content="es">Informe de Título</h3>
+        <h3 class="service-name" lang-content="en">Title Report</h3>
+        <span class="service-name-es" lang-content="es">Title Report</span>
+        <span class="service-name-es" lang-content="en">Informe de Título</span>
+        <p class="service-desc" lang-content="es">Un resumen formal y completo de la cadena de dominio y todos los gravámenes encontrados. Entregado en español o inglés, estructurado para uso de abogados de cierre, prestamistas y aseguradoras de título.</p>
+        <p class="service-desc" lang-content="en">A formatted, attorney-ready title abstract summarizing the full chain of ownership and all encumbrances found. Delivered in Spanish or English, structured for closing attorneys, lenders, and underwriters.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="process-header reveal">
+      <span class="section-label" lang-content="es">Cómo Funciona</span>
+      <span class="section-label" lang-content="en">How It Works</span>
+      <h2 class="section-title" lang-content="es">De la solicitud<br /><em style="color:var(--gold)">al informe</em></h2>
+      <h2 class="section-title" lang-content="en">From request<br /><em style="color:var(--gold)">to report</em></h2>
+      <p class="section-sub" lang-content="es">Un proceso ágil diseñado para ajustarse a los tiempos de su cierre.</p>
+      <p class="section-sub" lang-content="en">A streamlined process built around your closing timeline.</p>
+    </div>
+    <div class="process-steps">
+
+      <div class="process-step reveal">
+        <div class="step-icon-wrap">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="6" width="28" height="36" rx="2" stroke="currentColor" stroke-width="2"/>
+            <line x1="16" y1="16" x2="32" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="22" x2="32" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="28" x2="24" y2="28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="step-num">1</span>
+        </div>
+        <div class="step-title" lang-content="es">Envíe su Solicitud</div>
+        <div class="step-title" lang-content="en">Submit Your Request</div>
+        <span class="step-title-es" lang-content="es">Submit Your Request</span>
+        <span class="step-title-es" lang-content="en">Envíe su Solicitud</span>
+        <p class="step-desc" lang-content="es">Provea el número catastral, nombre del propietario o dirección municipal. Use el formulario de contacto o comuníquese por correo electrónico.</p>
+        <p class="step-desc" lang-content="en">Provide the property's cadastral number, owner name, or municipal address. Use our contact form or reach us directly by email.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <div class="step-icon-wrap">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="24" cy="12" rx="14" ry="5" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 12v10c0 2.76 6.27 5 14 5s14-2.24 14-5V12" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 22v10c0 2.76 6.27 5 14 5s14-2.24 14-5V22" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <span class="step-num">2</span>
+        </div>
+        <div class="step-title" lang-content="es">Investigación Registral</div>
+        <div class="step-title" lang-content="en">Registry Research</div>
+        <span class="step-title-es" lang-content="es">Registry Research</span>
+        <span class="step-title-es" lang-content="en">Investigación Registral</span>
+        <p class="step-desc" lang-content="es">Accedemos KARIBE directamente para rastrear la cadena de dominio completa, recuperando cada instrumento y escritura que afecte la propiedad.</p>
+        <p class="step-desc" lang-content="en">We access KARIBE directly to trace the complete chain of title, retrieving every recorded instrument and deed affecting the property.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <div class="step-icon-wrap">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="21" cy="21" r="11" stroke="currentColor" stroke-width="2"/>
+            <line x1="29.5" y1="29.5" x2="40" y2="40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="16" y1="21" x2="26" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="21" y1="16" x2="21" y2="26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="step-num">3</span>
+        </div>
+        <div class="step-title" lang-content="es">Revisión de Gravámenes</div>
+        <div class="step-title" lang-content="en">Lien &amp; Encumbrance Review</div>
+        <span class="step-title-es" lang-content="es">Lien &amp; Encumbrance Review</span>
+        <span class="step-title-es" lang-content="en">Revisión de Gravámenes</span>
+        <p class="step-desc" lang-content="es">Cruzamos sentencias, hipotecas, embargos y cualquier otro gravamen en el record público — no dejamos nada sin revisar.</p>
+        <p class="step-desc" lang-content="en">We cross-reference judgments, mortgages, attachments, and any other encumbrances in the public record — nothing is overlooked.</p>
+      </div>
+
+      <div class="process-step reveal">
+        <div class="step-icon-wrap">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="6" width="28" height="36" rx="2" stroke="currentColor" stroke-width="2"/>
+            <polyline points="17,24 22,29 31,19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="step-num">4</span>
+        </div>
+        <div class="step-title" lang-content="es">Informe Entregado</div>
+        <div class="step-title" lang-content="en">Report Delivered</div>
+        <span class="step-title-es" lang-content="es">Report Delivered</span>
+        <span class="step-title-es" lang-content="en">Informe Entregado</span>
+        <p class="step-desc" lang-content="es">Recibe un informe de título completo y bien estructurado en el idioma de su preferencia — listo para que su abogado o prestamista actúe.</p>
+        <p class="step-desc" lang-content="en">You receive a complete, formatted title report in your preferred language — ready for your closing attorney or lender to act on.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content reveal">
+        <span class="section-label" lang-content="es">Sobre Nosotros</span>
+        <span class="section-label" lang-content="en">About</span>
+        <blockquote class="about-quote" lang-content="es">"En Puerto Rico, conocer el Registro de la Propiedad lo es todo."</blockquote>
+        <blockquote class="about-quote" lang-content="en">"In Puerto Rico, knowing the Registry of Property is everything."</blockquote>
+        <p class="about-body" lang-content="es">Island Title Research es operado por <strong>Clarissa S. Maldonado</strong> desde Trujillo Alto, Puerto Rico. Con acceso directo al sistema KARIBE y dominio profundo del sistema de derecho civil de Puerto Rico, Clarissa ofrece servicios de investigación de título a abogados, agentes de bienes raíces, compradores, vendedores y prestamistas en los 78 municipios de la isla.</p>
+        <p class="about-body" lang-content="en">Island Title Research is operated by <strong>Clarissa S. Maldonado</strong> from Trujillo Alto, Puerto Rico. With direct KARIBE access and deep knowledge of Puerto Rico's civil law property system, Clarissa provides title investigation services to attorneys, agents, buyers, sellers, and lenders across all 78 municipalities.</p>
+        <p class="about-body" lang-content="es">El registro de propiedad en Puerto Rico opera bajo la tradición del derecho civil español — los títulos son <em>escrituras</em>, registrados en el <em>Registro de la Propiedad</em>, supervisados por el ODIB. Entender este sistema no es opcional. Es el trabajo.</p>
+        <p class="about-body" lang-content="en">Puerto Rico's property registry operates under Spanish civil law tradition — deeds are <em>escrituras</em>, recorded at the <em>Registro de la Propiedad</em>, supervised by the ODIB. Understanding this system isn't optional. It's the work.</p>
+        <div class="about-stats">
+          <div class="stat-block"><div class="stat-number">78</div><div class="stat-label" lang-content="es">Municipios</div><div class="stat-label" lang-content="en">Municipalities</div></div>
+          <div class="stat-block"><div class="stat-number">EN·ES</div><div class="stat-label" lang-content="es">Informes Bilingüe</div><div class="stat-label" lang-content="en">Bilingual Reports</div></div>
+          <div class="stat-block"><div class="stat-number">KARIBE</div><div class="stat-label" lang-content="es">Acceso Directo</div><div class="stat-label" lang-content="en">Direct Access</div></div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="about-img-frame">
+          <div class="about-placeholder">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="8" width="48" height="48" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="32" cy="26" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M16 50 Q32 38 48 50" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+            <p lang-content="es">Foto — Clarissa S. Maldonado</p>
+            <p lang-content="en">Photo — Clarissa S. Maldonado</p>
+          </div>
+        </div>
+        <div class="about-badge">
+          <div class="badge-text">Trujillo Alto<br />Puerto Rico</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <span class="section-label reveal" lang-content="es">Contáctenos</span>
+    <span class="section-label reveal" lang-content="en">Get in Touch</span>
+    <h2 class="section-title reveal" lang-content="es">Solicite una<br /><em style="color:var(--gold)">búsqueda de título</em></h2>
+    <h2 class="section-title reveal" lang-content="en">Request a<br /><em style="color:var(--gold)">title search</em></h2>
+    <p class="section-sub reveal" lang-content="es">Cuéntenos sobre su propiedad y el servicio que necesita. Le respondemos con prontitud.</p>
+    <p class="section-sub reveal" lang-content="en">Tell us about your property and the service you need. We'll follow up promptly.</p>
+
+    <div class="contact-wrap">
+      <form name="contact" method="POST" data-netlify="true" class="reveal">
+        <input type="hidden" name="form-name" value="contact" />
+        <div class="form-row">
+          <div class="form-group">
+            <label lang-content="es">Nombre</label>
+            <label lang-content="en">Full Name</label>
+            <input type="text" name="name" placeholder="Juan Pérez" required />
+          </div>
+          <div class="form-group">
+            <label lang-content="es">Teléfono</label>
+            <label lang-content="en">Phone</label>
+            <input type="tel" name="phone" placeholder="(787) 000-0000" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label lang-content="es">Correo Electrónico</label>
+          <label lang-content="en">Email Address</label>
+          <input type="email" name="email" placeholder="juan@ejemplo.com" required />
+        </div>
+        <div class="form-group">
+          <label lang-content="es">Dirección o Número Catastral</label>
+          <label lang-content="en">Property Address or Cadastral Number</label>
+          <input type="text" name="property" placeholder="Urb. Santa Rosa, Calle 5 #12, Bayamón · o · 147-000-001-01" />
+        </div>
+        <div class="form-group">
+          <label lang-content="es">Mensaje (opcional)</label>
+          <label lang-content="en">Message (optional)</label>
+          <textarea name="message" lang-content="es" placeholder="Fecha de cierre, nombre del abogado, cualquier detalle adicional..."></textarea>
+          <textarea name="message" lang-content="en" placeholder="Closing date, attorney name, any additional context..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit" lang-content="es">Enviar Solicitud →</button>
+        <button type="submit" class="btn-submit" lang-content="en">Send Request →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">Island Title Research</span>
+    <div class="footer-links">
+      <a href="mailto:info@islandtitleresearch.com">info@islandtitleresearch.com</a>
+      <a href="https://islandtitleresearch.com">islandtitleresearch.com</a>
+    </div>
+    <span class="footer-copy">© 2025 Island Title Research · Trujillo Alto, PR</span>
+  </div>
+</footer>
+
+<script>
+  // Language toggle
+  function setLang(lang) {
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+    document.documentElement.lang = lang;
+    localStorage.setItem('itr-lang', lang);
+  }
+  const saved = localStorage.getItem('itr-lang');
+  if (saved === 'en') setLang('en');
+
+  function toggleDark() {
+    const isDark = document.body.classList.toggle('dark-mode');
+    document.getElementById('dark-toggle').textContent = isDark ? '○' : '◐';
+    localStorage.setItem('itr-dark', isDark ? '1' : '');
+  }
+  if (localStorage.getItem('itr-dark')) {
+    document.body.classList.add('dark-mode');
+    document.getElementById('dark-toggle').textContent = '○';
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
