@@ -265,6 +265,13 @@
       cursor: pointer; margin-top: 0.25rem; transition: opacity 0.2s, transform 0.15s;
     }
     .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-status {
+      margin-top: 1rem; padding: 0.85rem 1rem; border-radius: 2px;
+      font-size: 0.82rem; line-height: 1.6;
+    }
+    .form-status.success { background: rgba(166,124,46,0.14); border: 1px solid rgba(166,124,46,0.4); color: var(--gold); }
+    .form-status.error { background: rgba(196,68,68,0.12); border: 1px solid rgba(196,68,68,0.4); color: #e08a8a; }
 
     /* FOOTER */
     footer { background: var(--ink); border-top: 1px solid rgba(166,124,46,0.1); padding: 2rem 2rem; }
@@ -604,8 +611,7 @@
     <p class="section-sub reveal" lang-content="en">Tell us about your property and the service you need. We'll follow up promptly.</p>
 
     <div class="contact-wrap">
-      <form name="contact" method="POST" data-netlify="true" class="reveal">
-        <input type="hidden" name="form-name" value="contact" />
+      <form id="contact-form" action="https://formspree.io/f/mrewyyrr" method="POST" class="reveal">
         <div class="form-row">
           <div class="form-group">
             <label lang-content="es">Nombre</label>
@@ -636,6 +642,7 @@
         </div>
         <button type="submit" class="btn-submit" lang-content="es">Enviar Solicitud →</button>
         <button type="submit" class="btn-submit" lang-content="en">Send Request →</button>
+        <div id="form-status" class="form-status" hidden></div>
       </form>
     </div>
   </div>
@@ -680,6 +687,57 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Contact form (Formspree)
+  const contactForm = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
+  const formStatusText = {
+    es: {
+      success: 'Gracias. Hemos recibido su solicitud y le responderemos en breve.',
+      error: 'Hubo un problema al enviar el formulario. Intente de nuevo o escríbanos a info@islandtitleresearch.com.'
+    },
+    en: {
+      success: "Thank you. We've received your request and will follow up shortly.",
+      error: 'There was a problem sending the form. Please try again or email us at info@islandtitleresearch.com.'
+    }
+  };
+  function currentLang() { return document.body.classList.contains('lang-en') ? 'en' : 'es'; }
+  function showFormStatus(type) {
+    formStatus.textContent = formStatusText[currentLang()][type];
+    formStatus.className = 'form-status ' + type;
+    formStatus.hidden = false;
+  }
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const lang = currentLang();
+    const payload = {
+      name: contactForm.name.value,
+      phone: contactForm.phone.value,
+      email: contactForm.email.value,
+      property: contactForm.property.value,
+      message: contactForm.querySelector(`textarea[name="message"][lang-content="${lang}"]`).value
+    };
+    const submitBtns = contactForm.querySelectorAll('.btn-submit');
+    submitBtns.forEach(b => b.disabled = true);
+    formStatus.hidden = true;
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        contactForm.reset();
+        showFormStatus('success');
+      } else {
+        showFormStatus('error');
+      }
+    } catch (err) {
+      showFormStatus('error');
+    } finally {
+      submitBtns.forEach(b => b.disabled = false);
+    }
+  });
 </script>
 
 </body>
